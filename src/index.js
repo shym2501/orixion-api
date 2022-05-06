@@ -27,6 +27,19 @@ app.get('/api', (req, res) => {
   });
 });
 
+app.get('/api/jenis', (req, res) => {
+  const sqlQuery = "SELECT * FROM jenis";
+
+  db.query(sqlQuery, (error, results, fields) => {
+    if (error) throw error;
+    return res.send({
+      error: false,
+      data: results,
+      message: 'All of jenis surat list'
+    });
+  });
+});
+
 // read:id
 app.get('/api/:id', (req, res) => {
   const inbox_id = req.body.id;
